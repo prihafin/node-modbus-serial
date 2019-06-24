@@ -130,10 +130,10 @@ function _handleReadCoilsOrInputDiscretes(requestBuffer, vector, unitID, callbac
             var cb = buildCb(i);
             try {
                 if (vectorCB.length === 3) {
-                    vectorCB(address + i, unitID, cb);
+                    vectorCB.call(vector, address + i, unitID, cb);
                 }
                 else {
-                    var promiseOrValue = vectorCB(address + i, unitID);
+                    var promiseOrValue = vectorCB.call(vector, address + i, unitID);
                     _handlePromiseOrValue(promiseOrValue, cb);
                 }
             }
